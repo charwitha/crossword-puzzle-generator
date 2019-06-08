@@ -4,7 +4,6 @@
   var WordFindGame = function() {
     var wordList;
     var wordPositions = wordfind.wordPositions;
-    console.log(wordPositions);
     var labelNo, output = '';
 
     var drawPuzzle = function (el, puzzle, words) {
@@ -96,9 +95,6 @@
           words[k] = list[k].word;
           hints[k] = list[k].hint;
         }
-
-        console.log(words);
-        console.log(hints);
         
         var puzzle = wordfind.newPuzzle(words, options);
 

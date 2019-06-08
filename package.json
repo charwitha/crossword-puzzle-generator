@@ -9,9 +9,13 @@
 	"author": "CharwithaB",
 	"license": "ISC",
 	"dependencies": {
+		"dir-glob": "2.0.0",
 		"firebase": "^4.12.1",
+		"firebase-admin": "^6.4.0",
+		"globby": "8.0.0",
 		"gulp-sass": "^3.2.1",
 		"gulp-scss": "^1.4.0",
+		"moment": "^2.24.0",
 		"scss-compile": "^0.1.7"
 	},
 	"devDependencies": {

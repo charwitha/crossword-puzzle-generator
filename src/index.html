@@ -6,106 +6,66 @@
   <link rel="stylesheet" type="text/css" href="css/styles.min.css">
   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Rammetto+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sriracha&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 </head>
 <body>
-  <div class="invalid-screen">
-    <h1>This can be played only on desktop screens</h1>
-  </div>
+  <div class="invalid-screen"><h1>This can be played only on desktop screens</h1></div>
   <div class="gradient-pattern sm-hide">
     <div id="panels-abv"></div>
     <div id="panels-blw"></div>
     <div class="main-section">
-     <h1>CrossWord</h1>
-     <input id="name-box" type="text" placeholder="Full Name" required>
-     <select id="select-topic">
-      <option class="topic" value="">Choose a topic</option>
-    </select>
-    <div class="choose">
-      <button id="start" class="btn-menu">Start</button>
+      <h1>CrossWord</h1>
+      <input id="name-box" type="text" placeholder="Full Name" required>
+      <select id="select-topic"><option class="topic" value="">Choose a topic</option></select>
+      <div class="choose"><button id="start" class="btn-menu">Start</button></div>
     </div>
-  </div>
 
-  <div class="side-menu">
-    <button id="fame" class="btn-menu">
-      <i class="fa fa-trophy" aria-hidden="true"></i>
-      <span class="menu-label">High Scores</span>
-    </button>
-    <button id="suggest" class="btn-menu">
-      <i class="fa fa-inbox" aria-hidden="true"></i>
-      <span class="menu-label">Suggestions</span>
-    </button>
-    <button id="info" class="btn-menu">
-      <i class="fa fa-info-circle" aria-hidden="true"></i>
-      <span class="menu-label">Info</span>
-    </button>
-  </div>
+    <div class="side-menu">
+      <button id="fame" class="btn-menu">
+        <i class="fa fa-trophy" aria-hidden="true"></i>
+        <span class="menu-label">High Scores</span>
+      </button>
+      <button id="suggest" class="btn-menu">
+        <i class="fa fa-inbox" aria-hidden="true"></i>
+        <span class="menu-label">Suggestions</span>
+      </button>
+      <button id="info" class="btn-menu">
+        <i class="fa fa-info-circle" aria-hidden="true"></i>
+        <span class="menu-label">Info</span>
+      </button>
+    </div>
 
-  <div class="side-panel">
-    <div class="panel-head">
-      <button class="panel-close">&times;</button>
-      <div class="logo-image">
-        <h1>CrossWord</h1>
+    <div class="side-panel">
+      <div class="panel-head">
+        <button class="panel-close">&times;</button>
+        <div class="logo-image">
+          <h1>CrossWord</h1>
+        </div>
       </div>
+      <div class="panel-content"></div>
     </div>
-    <div class="panel-content"></div>
-  </div>
 
-  <!-- <div class="credits-section">
-    <div class="panel-head">
-      <button class="panel-close">&times;</button>
-      <div class="logo-image">
-        <h1>CrossWord</h1>
-      </div>
+    <div class="sec-1-1"><table id='puzzle' class="table-responsive"></table></div>
+    <div class="sec-2-1"><h3>Clues</h3><div id='words'></div></div>
+    <div class="sec-3-1"></div>
+    <div class="sec-4-1"><div class="timer"></div></div>
+    <div class="sec-5-1"><button id="submit" class="board-icons">Submit</button></div>
+    <div class="sec-6-1"><div class="info"></div></div>
+    <div class="sec-7-1"><button id="reset" class="board-icons"><i class="fa fa-undo" aria-hidden="true"></i></button></div>
+
+    <div id="panel-starter">
+      <button id="exit" class="board-icons"><i class="fa fa-times-circle" aria-hidden="true"></i></button>
     </div>
-    <div class="panel-content"></div>
-  </div> -->
-
-  <div class="sec-1-1">
-    <table id='puzzle' class="table-responsive"></table>
   </div>
 
-  <div class="sec-2-1">
-    <h3>Clues</h3>
-    <div id='words'></div>
-  </div>
+  <script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="dependencies/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script type="text/javascript" src="js/wordfind.js"></script>
+  <script type="text/javascript" src="js/wordfindgame.js"></script>
+  <script type="text/javascript" src="js/crossword-puzzle.js"></script>
 
-  <div class="sec-3-1"></div>
-
-  <div class="sec-4-1">
-    <div class="timer"></div>
-    <div class="info"></div>
-  </div>
-
-  <div class="sec-5-1">
-    <button id="submit" class="board-icons">Submit</button>
-  </div>
-
-  <div class="sec-6-1">
-    <button id="new-board" class="board-icons">New</button>
-  </div>
-
-  <div class="sec-7-1">
-    <button id="reset" class="board-icons">
-      <i class="fa fa-undo" aria-hidden="true"></i>
-    </button>
-  </div>
-
-  <div id="panel-starter">
-    <button id="exit" class="board-icons">
-      <i class="fa fa-times-circle" aria-hidden="true"></i>
-    </button>
-  </div>
-</div>
-
-<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="dependencies/bootstrap.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-<script type="text/javascript" src="js/database-conn.js"></script>
-<script type="text/javascript" src="js/puzzleComplete.js"></script> 
-<script type="text/javascript" src="js/script.js"></script>
-<script type="text/javascript" src="js/wordfind.js"></script>
-<script type="text/javascript" src="js/wordfindgame.js"></script> 
 </body>
 </html>
