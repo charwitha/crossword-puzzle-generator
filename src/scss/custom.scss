@@ -57,10 +57,6 @@ input:focus {
   right: 0;
   top: 120px;
 
-  .btn-menu {
-    transition: width .3s;
-  }
-
   .btn-menu:hover {
     width: 150px;
   } 
@@ -85,6 +81,11 @@ input:focus {
 
 #start {
   width: 90px;
+  height: 45px;
+  padding: 10px 15px;
+  color: #fff;
+  background-color: #000;
+  border: 2px solid #000;
 }
 
 .logo-image h1{
@@ -138,22 +139,21 @@ input:focus {
 
 .btn-menu {
   height: 45px;
-  width: 50px;
-  padding: 10px;
+  width: 150px;
+  padding: 10px 15px;
   color: #fff;
   margin: 20px 0;
+  margin-right: -100px;
   background-color: #000;
   border: none;
-  transition: background-color .5s, width 0.5s;
+  text-align: left;
+  transition: background-color .3s, margin-right 0.3s;
   border: 2px solid #000;
 
   &:hover {
     background-color: #fff;
     color: #000;
-
-    .fa {
-      display: none;
-    }
+    margin-right: -5px;
 
     span {
       opacity: 1;

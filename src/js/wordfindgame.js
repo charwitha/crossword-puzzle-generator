@@ -32,7 +32,7 @@
        output += '</tr>';
      }
 
-     $(el).html(output);
+     $(el).empty().html(output);
    };
     /**
     * Draws the words by inserting an unordered list into el.
@@ -82,8 +82,8 @@
       * @param {Options} options: WordFind options to use when creating the puzzle
       */
       create: function(words, puzzleEl, wordsEl, hints, options) {
-
         var list = [];
+
         for (var j = 0; j < words.length; j++) 
           list.push({'word': words[j], 'hint': hints[j]});
 

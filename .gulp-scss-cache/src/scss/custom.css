@@ -46,8 +46,6 @@ input:focus {
   position: absolute;
   right: 0;
   top: 120px; }
-  .side-menu .btn-menu {
-    transition: width .3s; }
   .side-menu .btn-menu:hover {
     width: 150px; }
 
@@ -67,7 +65,12 @@ input:focus {
     margin-right: 0; }
 
 #start {
-  width: 90px; }
+  width: 90px;
+  height: 45px;
+  padding: 10px 15px;
+  color: #fff;
+  background-color: #000;
+  border: 2px solid #000; }
 
 .logo-image h1 {
   font-size: 4vw;
@@ -113,19 +116,20 @@ input:focus {
 
 .btn-menu {
   height: 45px;
-  width: 50px;
-  padding: 10px;
+  width: 150px;
+  padding: 10px 15px;
   color: #fff;
   margin: 20px 0;
+  margin-right: -100px;
   background-color: #000;
   border: none;
-  transition: background-color .5s, width 0.5s;
+  text-align: left;
+  transition: background-color .3s, margin-right 0.3s;
   border: 2px solid #000; }
   .btn-menu:hover {
     background-color: #fff;
-    color: #000; }
-    .btn-menu:hover .fa {
-      display: none; }
+    color: #000;
+    margin-right: -5px; }
     .btn-menu:hover span {
       opacity: 1;
       visibility: visible;

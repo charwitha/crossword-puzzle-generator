@@ -41,17 +41,19 @@ var buildPuzzle = function(topic) {
     $('.sec-3-1').css('background-image', 'url("'+ topicInfo.logo +'")');
     $('.sec-1-1').css('background-image', 'url("'+ topicInfo.image +'")');
     $('#puzzle').css('background-image', 'url("'+ topicInfo.image +'")');
-    $('.info').append(topicInfo.info);
+    $('.info').empty().append(topicInfo.info);
 
     wordfindgame.create(words, puzzleContainer, cluesContainer, clues);
     wordfind.newPuzzle(words, {height: 100, width:100, fillBlanks: false});
-}
+};
 
 /** Get and set all topics from firebase */
 refTopics.orderByChild('name').once('value').then(function(snapshot) {
-    var topics = snapshot.val();
-    var $elem = $('#select-topic');
-    var options = '';
+    var topics = snapshot.val(),
+        $elem = $('#select-topic'),
+        options = '',
+        selectedTopic = '',
+        user = '';
     
     for (var i in Object.keys(topics)) {
         options += '<option class="topic" value="'+ Object.values(topics)[i] +'">'+ Object.keys(topics)[i] +'</option>';
@@ -59,11 +61,15 @@ refTopics.orderByChild('name').once('value').then(function(snapshot) {
     $elem.append(options);
 
     $elem.on('change', function() {
-        var selectedTopic = $elem.val();
-        var user = $('#name-box').val();
-        
+        selectedTopic = $elem.val();
+        user = $('#name-box').val();
+    });
+
+    $('#start').on('click', function () {
         if(user) {
             buildPuzzle(selectedTopic);
+            getGame();
+            setTimeout(timer, 3000);
         } else {
           alert("Please fill your name and choose a topic!");
           location.reload();
@@ -172,10 +178,18 @@ var timer = function() {
     
         if (distance < 0) {
             clearInterval(x);
-            submitBoard()
+            submitBoard();
             $('#exit').click();
         }
     }, 1000);
+};
+
+var postScore = function(user, score, time) {
+    scoreRef.push().set ({
+      "Name" : user,
+      "Score" : score,
+      "Time" : time
+    });
 };
 
 /**Submit Board with answers */
@@ -200,7 +214,7 @@ var submitBoard = function() {
     
     if(score >= inter) {
         alert("Expert");
-        getScore(user, score, time);
+        postScore(user, score, time);
     } else if(score >=beginner && score < inter) {
         alert("Moderate");
     } else if(score == 0) {
@@ -208,6 +222,8 @@ var submitBoard = function() {
     } else {
         alert("Beginner");
     }
+
+    removeGame();
 };
 
 $(document).ready(function() {
@@ -216,11 +232,6 @@ $(document).ready(function() {
         $close = $('.panel-close');
 
     // Click Events
-    $('#start').on('click', function () {
-        getGame();
-        setTimeout(timer, 3000);
-    });
-
     $('#exit').click(function() {
         removeGame();
         setTimeout(function() {
@@ -236,9 +247,9 @@ $(document).ready(function() {
       });
   
     $('#suggest').click(function() {
-        var panelContent = '<p>Please suggest your topic or write any message here...</p>' 
-            + '<input class="panel-field" type="text" placeholder="Topic/Message" name="message">'
-            + '<button class="panel-btn" id="post">Post</button>';
+        var panelContent = '<p>Please suggest your topic or write any message here...</p>' +
+            '<input class="panel-field" type="text" placeholder="Topic/Message" name="message">' + 
+            '<button class="panel-btn" id="post">Post</button>';
     
         $sidebar.addClass('active');
         
@@ -257,7 +268,7 @@ $(document).ready(function() {
     });
   
     $('#info').click(function() {
-        $sidebar.addClass('active')
+        $sidebar.addClass('active');
     });
   
     $('#reset').click(function () {
@@ -267,7 +278,7 @@ $(document).ready(function() {
     $('.side-panel').on('click', '#post', function() {
         var msg = $('.panel-field').val();
         postMessage(msg);
-        $panel.append('Posted!!')
+        $panel.append('Posted!!');
 
         setTimeout(function() {
             $close.click();
@@ -278,4 +289,4 @@ $(document).ready(function() {
         $sidebar.removeClass('active');
         $panel.empty();
     });
-})
+});

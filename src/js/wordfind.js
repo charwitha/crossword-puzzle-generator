@@ -267,7 +267,7 @@
       * @api public
       */
       newPuzzle: function(words, settings) {
-        var wordList, puzzle, attempts = 0, opts = settings || {};
+        var wordList = [], puzzle, attempts = 0, opts = settings || {};
 
         wordList = words;
 
