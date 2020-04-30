@@ -33,7 +33,7 @@
 		"gulp-sourcemaps": "~2.2.0",
 		"gulp-uglify": "~2.0.0",
 		"gulp-watch": "~4.3.10",
-		"jquery": "^3.2.1",
+		"jquery": "^3.5.0",
 		"jshint": "~2.9.4",
 		"jshint-stylish": "~2.2.1",
 		"path": "~0.12.7",
